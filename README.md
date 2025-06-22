@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VIRECA
+
+VIRECA is a modern web application built with Next.js, featuring a user-friendly interface, Stellar blockchain integration, and health data visualization modules. The project is developed by KOZA DAO.
+
+## Features
+
+- **Next.js 13+ App Router** architecture
+- **Stellar Blockchain** wallet connection and network management
+- Health modules such as **Blood Analysis** and **Radiology Viewer**
+- Modern, themeable UI with **Tailwind CSS** and **@stellar/design-system**
+- Light and dark theme support
+- Global state management with notification and wallet providers
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/vireca-app.git
+cd vireca-app
+npm install
+# or
+yarn install
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/                # Pages and layouts
+    blood-analysis/   # Blood analysis module
+    radiography/      # Radiology viewer
+    components/       # Shared components (SidebarMenu, ConnectAccount, etc.)
+  contracts/          # Stellar-related helpers and types
+  hooks/              # React custom hooks
+public/               # Static files and images
+```
 
-## Learn More
+## Key Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [@stellar/design-system](https://github.com/stellar/design-system)
+- [zod](https://zod.dev/) (for env and type validation)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stellar Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Stellar network and RPC settings are managed in [`src/contracts/util.ts`](src/contracts/util.ts). You can easily switch networks using environment variables.
 
-## Deploy on Vercel
+## Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Theme:** Switch between light and dark mode using the toggle in the top right.
+- **Sidebar:** Navigate between modules using the left sidebar.
+- **Wallet:** Connect your Stellar wallet using the "ConnectAccount" button in the header.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+You can easily deploy the project on Vercel:
+
+[Deploy with Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
+
+For more information, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## Contributing & License
+
+Contributions are welcome! Please open an issue before submitting a pull request.
+
+---
+
+© {current year} VIRECA & KOZA DAO
