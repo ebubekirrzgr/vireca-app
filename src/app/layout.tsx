@@ -1,27 +1,35 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from "react"
-import { Layout, ThemeSwitch } from "@stellar/design-system"
-import ConnectAccount from "@/components/ConnectAccount"
-import { SidebarMenu } from "@/components/SidebarMenu"
-import { NotificationProvider } from "@/providers/NotificationProvider"
-import { WalletProvider } from "@/providers/WalletProvider"
-import '@stellar/design-system/build/styles.min.css'
+import React, { useEffect, useState } from "react";
+import { Layout, ThemeSwitch } from "@stellar/design-system";
+import ConnectAccount from "@/components/ConnectAccount";
+import { SidebarMenu } from "@/components/SidebarMenu";
+import { NotificationProvider } from "@/providers/NotificationProvider";
+import { WalletProvider } from "@/providers/WalletProvider";
+import "@stellar/design-system/build/styles.min.css";
+import Logo from "@/../public/images/logo.png";
+import Image from "next/image";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light")
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("sds-theme-dark")
-    const isLightMode = document.documentElement.classList.contains("sds-theme-light")
+    const isDarkMode =
+      document.documentElement.classList.contains("sds-theme-dark");
+    const isLightMode =
+      document.documentElement.classList.contains("sds-theme-light");
 
-    if (isDarkMode) setTheme("dark")
-    else if (isLightMode) setTheme("light")
+    if (isDarkMode) setTheme("dark");
+    else if (isLightMode) setTheme("light");
     else {
-      document.documentElement.classList.add("sds-theme-light")
-      setTheme("light")
+      document.documentElement.classList.add("sds-theme-light");
+      setTheme("light");
     }
-  }, [])
+  }, []);
 
   return (
     <main>
@@ -30,6 +38,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Layout.Header
             projectId="VIRECA"
             projectTitle="VIRECA"
+            contentCenter={
+              <Image
+                src={Logo}
+                alt="VIRECA Logo"
+                width={60}
+                height={50}
+                style={{ marginLeft: "50px", cursor: "pointer" }}
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+              />
+            }
             contentRight={
               <>
                 <ConnectAccount />
@@ -43,7 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               style={{
                 display: "flex",
                 backgroundColor:
-                  theme === "light" ? "var(--sds-canvas-default)" : "var(--sds-canvas-inverse)",
+                  theme === "light"
+                    ? "var(--sds-canvas-default)"
+                    : "var(--sds-canvas-inverse)",
                 color: theme === "light" ? "var(--sds-clr-lilac-09)" : "#fff",
                 flexDirection: "row",
                 alignItems: "center",
@@ -96,5 +118,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </WalletProvider>
       </NotificationProvider>
     </main>
-  )
+  );
 }
